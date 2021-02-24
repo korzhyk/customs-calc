@@ -1,0 +1,63 @@
+{
+  "name": "customs-calc",
+  "version": "1.0.0",
+  "description": "VAT and duty import fee calculator",
+  "author": "Andrii Korzh <andriii.korzh@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "browser": "dist/index.html",
+  "source": "src/index.html",
+  "targets": {
+    "browser": {
+      "sourceMap": false,
+      "engines": {
+        "browsers": "last 2 years"
+      }
+    }
+  },
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html",
+    "postbuild": "workbox generateSW"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2",
+    "bootstrap-icons-vue": "^0.5.0",
+    "currency.js": "^2.0.3",
+    "date-fns": "^2.17.0",
+    "parcel-config-pwa-manifest": "^0.0.8",
+    "sass": "^1.32.8",
+    "vue": "^3.0.5",
+    "vue-save-state": "^1.2.0"
+  },
+  "devDependencies": {
+    "@parcel/optimizer-cssnano": "2.0.0-nightly.609",
+    "@parcel/optimizer-htmlnano": "2.0.0-nightly.609",
+    "@parcel/packager-css": "2.0.0-nightly.609",
+    "@parcel/packager-html": "2.0.0-nightly.609",
+    "@parcel/packager-raw-url": "2.0.0-nightly.2231",
+    "@parcel/transformer-css": "2.0.0-nightly.609",
+    "@parcel/transformer-html": "2.0.0-nightly.609",
+    "@parcel/transformer-postcss": "2.0.0-nightly.609",
+    "@parcel/transformer-posthtml": "2.0.0-nightly.609",
+    "@parcel/transformer-sass": "2.0.0-nightly.609",
+    "@parcel/transformer-vue": "2.0.0-nightly.2231",
+    "parcel": "^2.0.0-nightly.607",
+    "postcss": "^8.2.1",
+    "workbox-cli": "^6.1.1"
+  },
+  "pwaManifest": {
+    "shortName": "Калькулятор",
+    "name": "Калькулятор митних платежів",
+    "startURL": "/",
+    "theme": "#0d6efd",
+    "generateIconOptions": {
+      "baseIcon": "./src/assets/calculator.svg",
+      "sizes": [
+        192,
+        384,
+        512
+      ]
+    }
+  }
+}

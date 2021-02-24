@@ -1,0 +1,233 @@
+<template>
+  <div class="card m-2">
+    <div class="card-header">
+      <div class="d-flex align-items-center">
+        <i class="calculator-icon" width="2rem" height="2rem"></i>
+        <h4 class="card-title m-0 ps-2">
+          Калькулятор митних платежів
+        </h4>
+      </div></div>
+    <div class="card-body">
+      <form>
+        <div class="row g-2 mb-4">
+          <div class="col">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="goodsValue" placeholder="128.00" v-model.number="value" ref="input" />
+              <label for="goodsValue">Вартість</label>
+            </div>
+          </div>
+          <div class="col col-currency">
+            <div class="form-floating">
+              <select class="form-select" id="goodsCurrency" aria-label="Валюта" v-model="currency" :disabled="!rates.length">
+                <option v-for="rate in rates" :value="rate.cc">
+                  {{ rate.cc }} – {{ rate.txt }}
+                </option>
+              </select>
+              <label for="goodsCurrency">Валюта</label>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div v-if="overDuty || overVAT" class="row tip-container">
+        <div class="tip-icon"><BIconExclamationCircle width="2rem" height="2rem" class="text-warning" /></div>
+        <div class="tip-message">
+          <span v-if="overVAT">
+            Вартість вашої посилки перевищує безподатковий ліміт у {{ format(vat_limit, limits_currency) }}.
+          </span>
+          <span v-if="overDuty">
+            А також вам доведеться сплатити мито від суми, що перевищує {{ format(duty_limit, limits_currency) }}.
+          </span>
+        </div>
+      </div>
+      <div v-else-if="value" class="row tip-container">
+        <div class="tip-icon"><BIconCheckCircle width="2rem" height="2rem" class="text-success" /></div>
+        <div class="tip-message">
+          <span>Вам пощастило! Нічого платити не потрібно, оскільки ви не перевищили ліміт у {{ format(vat_limit, limits_currency) }}.</span>
+        </div>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr v-if="currency !== 'UAH'">
+            <td>Вартість товару</td>
+            <td class="calculated-value">
+              <Currency :value="convert(value, currency)" />
+            </td>
+          </tr>
+          <tr :class="{ 'text-black-50': payVAT <= 0 }">
+            <td>
+              <abbr title="Податок на додану вартість">ПДВ</abbr>&nbsp;
+              <small class="text-muted" :title="'від ' + format(overVAT, 'UAH')">
+                ({{toPercent(vat)}}%)
+              </small>
+            </td>
+            <td class="calculated-value">
+              <Currency :value="payVAT" :title="format(convert(overVAT, 'UAH', currency), currency)" />
+            </td>
+          </tr>
+          <tr :class="{ 'text-black-50': payDuty <= 0 }">
+            <td>Мито&nbsp;
+              <small class="text-muted" :title="'від ' + format(overDuty, 'UAH')">
+                ({{toPercent(duty)}}%)
+              </small>
+            </td>
+            <td class="calculated-value">
+              <Currency :value="payDuty" :title="format(convert(overDuty, 'UAH', currency), currency)"  />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="w-100">Всього</th>
+            <th class="calculated-value">
+              <Currency :value="payVAT + payDuty" :title="format(convert(payVAT + payDuty, 'UAH', currency), currency)" />
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="card-footer text-muted text-center">
+      <small v-if="rates_updating">
+        Оновлення курсів валют
+        <div class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">зачекайте...</span>
+        </div>
+      </small>
+      <small v-else-if="rates_updated_at">
+        Курси валют оновлено: <a href="#update-rates" title="Натисніть для оновлення" @click="updateRates">
+          <time :datetime="rates_updated_at">{{ updated }}</time>
+        </a>
+      </small>
+      <small v-else>
+        Не вдалось оновити курси валют – <a href="#update-rates" title="Натисніть для оновлення" @click="updateRates">
+          спробувати ще раз
+        </a>
+      </small>
+    </div>
+  </div>
+  <ul class="nav justify-content-center m-2">
+    <!--<li class="nav-item">
+      <a class="nav-link" href="#settings"><BIconSliders /></a>
+    </li>-->
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/korzhyk/customs-calc" target="_blank">
+        <BIconGithub />
+      </a>
+    </li>
+  </ul>
+</template>
+
+<script>
+  import differenceInHours from 'date-fns/esm/differenceInHours'
+  import formatRelative from 'date-fns/esm/formatRelative'
+  import uk from 'date-fns/esm/locale/uk'
+  import {
+    BIconThreeDots,
+    BIconCheckCircle,
+    BIconExclamationCircle,
+    BIconSliders,
+    BIconGithub
+  } from 'bootstrap-icons-vue'
+  import saveState from 'vue-save-state'
+
+  import Currency from './Currency'
+  import format from '../lib/utils'
+  import { getExchangeRates } from '../lib/api'
+
+  let ratesUpdateInterval
+
+  export default {
+    mixins: [ saveState ],
+    components: {
+      Currency,
+      BIconCheckCircle,
+      BIconExclamationCircle,
+      BIconThreeDots,
+      // BIconSliders,
+      BIconGithub
+    },
+    data() {
+      return {
+        value: null,
+        currency: 'USD',
+        rates: [],
+        rates_updated_at: null,
+        rates_updating: false,
+        vat: .2,
+        duty: .1,
+        vat_limit: 100,
+        duty_limit: 150,
+        limits_currency: 'EUR'
+      }
+    },
+    mounted () {
+      // Setup rate update interval
+      differenceInHours(this.rates_updated_at, new Date) || !this.rates_updated_at && this.updateRates()
+      ratesUpdateInterval = setInterval(() => this.updateRates(), 36e5)
+
+      // Make input auto-focused
+      this.$refs.input.select()
+      this.$refs.input.focus()
+    },
+    unmounted () {
+      clearInterval(ratesUpdateInterval)
+    },
+    methods: {
+      format,
+      getSaveStateConfig () {
+        return {
+          cacheKey: 'calculator',
+          onLoad: (key, value) => {
+            if (key === 'rates_updated_at') {
+              return new Date(value)
+            }
+            return value
+          }
+        }
+      },
+      async updateRates () {
+        try {
+          this.rates_updating = true
+          this.rates = await getExchangeRates()
+          this.rates_updated_at = new Date
+        } catch (e) {
+          console.warn('Exchange rates update failed:', e.message)
+        } finally {
+          this.rates_updating = false
+        }
+      },
+      findRate (symbol) {
+        const rate = this.rates.find(r => r.cc === symbol)
+        return rate ? rate.rate : 0
+      },
+      convert (value, from, to = 'UAH') {
+        return value * this.findRate(from) / this.findRate(to) || 0
+      },
+      calculateOver (limit) {
+        const costsOfGoods = this.value * this.findRate(this.currency)
+        const limitValue = limit * this.findRate(this.limits_currency)
+        return costsOfGoods - limitValue
+      },
+      toPercent: val => Math.ceil(100 * val)
+    },
+    computed: {
+      overDuty () {
+        const overLimit = this.calculateOver(this.duty_limit)
+        return overLimit <= 0 ? 0 : overLimit 
+      },
+      overVAT () {
+        let overLimit = this.calculateOver(this.vat_limit)
+        overLimit += this.payDuty
+        return overLimit <= 0 ? 0 : overLimit
+      },
+      payDuty () {
+        return this.overDuty * this.duty
+      },
+      payVAT () {
+        return this.overVAT * this.vat
+      },
+      updated () {
+       return formatRelative(this.rates_updated_at, new Date(), { locale: uk })
+     }
+    }
+  }
+</script>

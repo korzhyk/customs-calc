@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Калькулятор митних платежів</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/calculator.svg" type="image/svg+xml">
+    <link rel="stylesheet" type="text/css" href="style.sass">
+  </head>
+  <body>
+    <noscript>Для роботи даного додатку потрібно увімкнути JavaScript.</noscript>
+    <main id="calc"></main>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+      const sw = 'service-worker.js'
+      navigator.serviceWorker
+        .register(sw)
+        .then(registration => {
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+            if (installingWorker == null) {
+              return;
+            }
+            installingWorker.onstatechange = () => {
+              if (installingWorker.state === "installed") {
+                if (navigator.serviceWorker.controller) {
+                  console.info(
+                    "Версія додатку оновилась і активується після закриття " +
+                    "усіх копій вкладок цього додатку."
+                  );
+                } else {
+                  console.info("Додаток збережено для офлайн доступу.");
+                }
+              }
+            };
+          };
+        })
+        .catch(error => {
+          console.error("Помилка під час встановлення веб-воркера:", error);
+        })
+    </script>
+  </body>
+</html>

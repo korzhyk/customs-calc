@@ -1,0 +1,78 @@
+@import "bootstrap/scss/bootstrap-reboot.scss"
+@import "bootstrap/scss/bootstrap-grid.scss"
+@import "bootstrap/scss/bootstrap-utilities.scss"
+@import "bootstrap/scss/_card.scss"
+@import "bootstrap/scss/forms/_floating-labels.scss"
+@import "bootstrap/scss/forms/_form-select.scss"
+@import "bootstrap/scss/forms/_form-control.scss"
+@import "bootstrap/scss/_nav.scss"
+@import "bootstrap/scss/_spinners.scss"
+@import "bootstrap/scss/_tables.scss"
+@import "bootstrap/scss/_type.scss"
+
+html, body
+  height: 100%
+
+body
+  display: flex
+  align-items: center
+
+#calc
+  width: 100%
+  max-width: 468px
+  margin: auto
+
+.calculator-icon
+  width: 2rem
+  height: 2rem
+  background: url('assets/calculator.svg') no-repeat
+  background-size: cover
+
+.calculated-value
+  @extend .font-monospace
+  @extend .text-end
+  @extend .text-nowrap
+
+.tip-container
+  @extend .d-flex
+  @extend .align-items-center
+  @extend .mb-3
+
+.tip-icon
+  @extend .col
+  @extend .col-auto
+
+.tip-message
+  @extend .col
+  @extend .ps-0
+  font-size: .9em
+
+@media (prefers-color-scheme: dark)
+  body
+    color: $gray-100
+    background-color: $gray-900
+
+  a
+    color: #5c9eff
+    &:hover
+      color: #96c0ff
+
+  .text-black-50,
+  .text-muted
+    color: $gray-500 !important
+
+  .table
+    color: $gray-100
+
+  .card
+    background-color: $gray-700
+    border-color: $gray-600
+
+  .form-control,
+  .form-select
+    color: $gray-100
+    background-color: $gray-800
+    border-color: $gray-600
+    &:focus
+      color: $white
+      background-color: $gray-900
