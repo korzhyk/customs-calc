@@ -2,7 +2,7 @@
   <div class="card m-2">
     <div class="card-header">
       <div class="d-flex align-items-center">
-        <i class="calculator-icon" width="2rem" height="2rem"></i>
+        <BIconCalculator width="2rem" height="2rem" />
         <h4 class="card-title m-0 ps-2">
           Калькулятор митних платежів
         </h4>
@@ -47,7 +47,7 @@
       </div>
       <table class="table">
         <tbody>
-          <tr v-if="currency !== 'UAH'">
+          <tr v-if="currency !== base">
             <td>Вартість товару</td>
             <td class="calculated-value">
               <Currency :value="convert(value, currency)" />
@@ -56,22 +56,22 @@
           <tr :class="{ 'text-black-50': payVAT <= 0 }">
             <td>
               <abbr title="Податок на додану вартість">ПДВ</abbr>&nbsp;
-              <small class="text-muted" :title="'від ' + format(overVAT, 'UAH')">
+              <small class="text-muted" :title="`від ${format(overVAT, base)} (${format(convert(overVAT, base, currency), currency)})`">
                 ({{toPercent(vat)}}%)
               </small>
             </td>
             <td class="calculated-value">
-              <Currency :value="payVAT" :title="format(convert(overVAT, 'UAH', currency), currency)" />
+              <Currency :value="payVAT" :title="format(convert(payVAT, base, currency), currency)" />
             </td>
           </tr>
           <tr :class="{ 'text-black-50': payDuty <= 0 }">
             <td>Мито&nbsp;
-              <small class="text-muted" :title="'від ' + format(overDuty, 'UAH')">
+              <small class="text-muted" :title="`від ${format(overDuty, base)} (${format(convert(overDuty, base, currency), currency)})`">
                 ({{toPercent(duty)}}%)
               </small>
             </td>
             <td class="calculated-value">
-              <Currency :value="payDuty" :title="format(convert(overDuty, 'UAH', currency), currency)"  />
+              <Currency :value="payDuty" :title="format(convert(payDuty, base, currency), currency)"  />
             </td>
           </tr>
         </tbody>
@@ -79,7 +79,7 @@
           <tr>
             <th class="w-100">Всього</th>
             <th class="calculated-value">
-              <Currency :value="payVAT + payDuty" :title="format(convert(payVAT + payDuty, 'UAH', currency), currency)" />
+              <Currency :value="payVAT + payDuty" :title="format(convert(payVAT + payDuty, base, currency), currency)" :convert="currency" />
             </th>
           </tr>
         </tfoot>
@@ -117,14 +117,13 @@
 </template>
 
 <script>
-  import differenceInHours from 'date-fns/esm/differenceInHours'
-  import formatRelative from 'date-fns/esm/formatRelative'
-  import uk from 'date-fns/esm/locale/uk'
+  import { differenceInHours, formatRelative } from 'date-fns/esm'
+  import {uk} from 'date-fns/esm/locale'
   import {
-    BIconThreeDots,
+    BIconCalculator,
     BIconCheckCircle,
     BIconExclamationCircle,
-    BIconSliders,
+    // BIconSliders,
     BIconGithub
   } from 'bootstrap-icons-vue'
   import saveState from 'vue-save-state'
@@ -133,20 +132,21 @@
   import format from '../lib/utils'
   import { getExchangeRates } from '../lib/api'
 
+  const BASE = 'UAH'
   let ratesUpdateInterval
 
   export default {
     mixins: [ saveState ],
     components: {
       Currency,
+      BIconCalculator,
       BIconCheckCircle,
       BIconExclamationCircle,
-      BIconThreeDots,
-      // BIconSliders,
       BIconGithub
     },
     data() {
       return {
+        base: BASE,
         value: null,
         currency: 'USD',
         rates: [],
@@ -199,7 +199,7 @@
         const rate = this.rates.find(r => r.cc === symbol)
         return rate ? rate.rate : 0
       },
-      convert (value, from, to = 'UAH') {
+      convert (value, from, to = BASE) {
         return value * this.findRate(from) / this.findRate(to) || 0
       },
       calculateOver (limit) {
@@ -210,6 +210,7 @@
       toPercent: val => Math.ceil(100 * val)
     },
     computed: {
+      calcIcon () { return calcIcon },
       overDuty () {
         const overLimit = this.calculateOver(this.duty_limit)
         return overLimit <= 0 ? 0 : overLimit 

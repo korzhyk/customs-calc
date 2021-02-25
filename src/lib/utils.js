@@ -7,8 +7,9 @@ const currencyFormats = {
   EUR: [ '€' ],
   GBP: [ '£' ],
   PLN: [ 'zł' , ' ', ',', '# !' ],
-  UAH: [ '₺' ],
+  TRY: [ '₺' ],
   UAH: [ '₴',   ' ', ',', '#!' ],
+  USD: [ '$' ],
 }
 
 const getFormatOptions = currency => {
