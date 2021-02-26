@@ -114,11 +114,16 @@
       </a>
     </li>
   </ul>
+  <div class="version">
+    <a :href="`https://github.com/korzhyk/customs-calc/commit/${build}`">
+      версія {{ version }} ({{ build }})
+    </a>
+  </div>
 </template>
 
 <script>
   import { differenceInHours, formatRelative } from 'date-fns/esm'
-  import {uk} from 'date-fns/esm/locale'
+  import { uk } from 'date-fns/esm/locale'
   import {
     BIconCalculator,
     BIconCheckCircle,
@@ -128,6 +133,7 @@
   } from 'bootstrap-icons-vue'
   import saveState from 'vue-save-state'
 
+  import { version } from '../../package'
   import Currency from './Currency'
   import format from '../lib/utils'
   import { getExchangeRates } from '../lib/api'
@@ -146,6 +152,8 @@
     },
     data() {
       return {
+        version,
+        build: process.env.BUILD_HASH || 'dev',
         base: BASE,
         value: null,
         currency: 'USD',

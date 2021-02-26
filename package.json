@@ -1,6 +1,6 @@
 {
   "name": "customs-calc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "VAT and duty import fee calculator",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
@@ -9,7 +9,7 @@
   "browserslist": "last 2 years",
   "scripts": {
     "dev": "parcel serve src/index.html",
-    "build": "parcel build --no-source-maps src/index.html",
+    "build": "BUILD_HASH=`git rev-parse --short HEAD` parcel build --no-source-maps src/index.html",
     "postbuild": "workbox generateSW"
   },
   "dependencies": {
