@@ -4,7 +4,6 @@
   "description": "VAT and duty import fee calculator",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
-  "private": true,
   "source": "src/index.html",
   "browserslist": "last 2 years",
   "scripts": {

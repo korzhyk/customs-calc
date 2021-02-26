@@ -5,5 +5,6 @@ module.exports = {
   ],
   swDest: "dist/service-worker.js",
   clientsClaim: true,
-  skipWaiting: true
+  skipWaiting: true,
+  sourcemap: false
 }

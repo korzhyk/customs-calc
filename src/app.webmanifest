@@ -1,7 +1,7 @@
 {
   "short_name": "Калькулятор",
   "name": "Калькулятор митних платежів",
-  "display": "minimal-ui",
+  "display": "standalone",
   "start_url": "/",
   "background_color": "#fff",
   "description": "Простий застосунок для розрахунку митних платежів.",
