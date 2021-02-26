@@ -161,7 +161,9 @@
     },
     mounted () {
       // Setup rate update interval
-      differenceInHours(this.rates_updated_at, new Date) && this.updateRates()
+      if (!this.rates_updated_at || differenceInHours(this.rates_updated_at, new Date)) {
+        this.updateRates()
+      }
       ratesUpdateInterval = setInterval(() => this.updateRates(), 36e5)
 
       // Make input auto-focused
