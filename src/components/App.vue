@@ -114,11 +114,7 @@
       </a>
     </li>
   </ul>
-  <div class="version">
-    <a :href="`https://github.com/korzhyk/customs-calc/commit/${build}`">
-      версія {{ version }} ({{ build }})
-    </a>
-  </div>
+  <div class="version">версія {{ version }}</div>
 </template>
 
 <script>
@@ -153,7 +149,6 @@
     data() {
       return {
         version,
-        build: process.env.BUILD_HASH || 'dev',
         base: BASE,
         value: null,
         currency: 'USD',
