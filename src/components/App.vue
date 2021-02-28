@@ -8,8 +8,8 @@
         </h4>
       </div></div>
     <div class="card-body">
-      <form>
-        <div class="row g-2 mb-4">
+      <form class="mb-4">
+        <div class="row g-2">
           <div class="col">
             <div class="form-floating">
               <input type="number" class="form-control" id="goodsValue" placeholder="128.00" v-model.number="value" ref="input" />
@@ -25,6 +25,18 @@
               </select>
               <label for="goodsCurrency">Валюта</label>
             </div>
+          </div>
+        </div>
+        <div v-if="currency !== base" class="row">
+          <div class="col text-center text-muted">
+            <small>
+              <Currency :value="convert(value, currency)" />
+            </small>
+          </div>
+          <div class="col text-center text-muted">
+            <small>
+              <Currency :value="1" :currency="currency" /> = <Currency :value="exchangeRate" />
+            </small>
           </div>
         </div>
       </form>
@@ -47,12 +59,6 @@
       </div>
       <table class="table">
         <tbody>
-          <tr v-if="currency !== base">
-            <td>Вартість товару</td>
-            <td class="calculated-value">
-              <Currency :value="convert(value, currency)" />
-            </td>
-          </tr>
           <tr :class="{ 'text-black-50': payVAT <= 0 }">
             <td>
               <abbr title="Податок на додану вартість">ПДВ</abbr>&nbsp;
@@ -215,7 +221,7 @@
       toPercent: val => Math.ceil(100 * val)
     },
     computed: {
-      calcIcon () { return calcIcon },
+      exchangeRate () { return this.findRate(this.currency) },
       overDuty () {
         const overLimit = this.calculateOver(this.duty_limit)
         return overLimit <= 0 ? 0 : overLimit 
