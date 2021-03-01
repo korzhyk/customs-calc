@@ -12,7 +12,7 @@
         <div class="row g-2">
           <div class="col">
             <div class="form-floating">
-              <input type="number" class="form-control" id="goodsValue" placeholder="128.00" v-model.number="value" ref="input" />
+              <input type="number" class="form-control" id="goodsValue" placeholder="128.00" v-model.number="value" v-focus />
               <label for="goodsValue">Вартість</label>
             </div>
           </div>
@@ -124,6 +124,7 @@
 </template>
 
 <script>
+  import saveState from 'vue-save-state'
   import { differenceInHours, formatRelative } from 'date-fns/esm'
   import { uk } from 'date-fns/esm/locale'
   import {
@@ -133,7 +134,6 @@
     // BIconSliders,
     BIconGithub
   } from 'bootstrap-icons-vue'
-  import saveState from 'vue-save-state'
 
   import { version } from '../../package'
   import Currency from './Currency'
@@ -151,6 +151,14 @@
       BIconCheckCircle,
       BIconExclamationCircle,
       BIconGithub
+    },
+    directives: {
+      focus: {
+        mounted(el) {
+          el.select()
+          el.focus()
+        }
+      }
     },
     data() {
       return {
@@ -174,10 +182,6 @@
         this.updateRates()
       }
       ratesUpdateInterval = setInterval(() => this.updateRates(), 36e5)
-
-      // Make input auto-focused
-      this.$refs.input.select()
-      this.$refs.input.focus()
     },
     unmounted () {
       clearInterval(ratesUpdateInterval)
