@@ -40,23 +40,6 @@
           </div>
         </div>
       </form>
-      <div v-if="overDuty || overVAT" class="row tip-container">
-        <div class="tip-icon"><BIconExclamationCircle width="2rem" height="2rem" class="text-warning" /></div>
-        <div class="tip-message">
-          <span v-if="overVAT">
-            Вартість вашої посилки перевищує безподатковий ліміт у {{ format(vat_limit, limits_currency) }}.
-          </span>
-          <span v-if="overDuty">
-            А також вам доведеться сплатити мито від суми, що перевищує {{ format(duty_limit, limits_currency) }}.
-          </span>
-        </div>
-      </div>
-      <div v-else-if="value" class="row tip-container">
-        <div class="tip-icon"><BIconCheckCircle width="2rem" height="2rem" class="text-success" /></div>
-        <div class="tip-message">
-          <span>Вам пощастило! Нічого платити не потрібно, оскільки ви не перевищили ліміт у {{ format(vat_limit, limits_currency) }}.</span>
-        </div>
-      </div>
       <table class="table">
         <tbody>
           <tr :class="{ 'text-black-50': payVAT <= 0 }">
@@ -90,6 +73,23 @@
           </tr>
         </tfoot>
       </table>
+      <div v-if="overDuty || overVAT" class="row tip-container">
+        <div class="tip-icon"><BIconExclamationCircle width="2rem" height="2rem" class="text-warning" /></div>
+        <div class="tip-message">
+          <span v-if="overVAT">
+            Вартість вашої посилки перевищує безподатковий ліміт у {{ format(vat_limit, limits_currency) }}.
+          </span>
+          <span v-if="overDuty">
+            А також вам доведеться сплатити мито від суми, що перевищує {{ format(duty_limit, limits_currency) }}.
+          </span>
+        </div>
+      </div>
+      <div v-else-if="value" class="row tip-container">
+        <div class="tip-icon"><BIconCheckCircle width="2rem" height="2rem" class="text-success" /></div>
+        <div class="tip-message">
+          <span>Вам пощастило! Нічого платити не потрібно, оскільки ви не перевищили ліміт у {{ format(vat_limit, limits_currency) }}.</span>
+        </div>
+      </div>
     </div>
     <div class="card-footer text-muted text-center">
       <small v-if="rates_updating">
@@ -111,9 +111,9 @@
     </div>
   </div>
   <ul class="nav justify-content-center m-2">
-    <!--<li class="nav-item">
-      <a class="nav-link" href="#settings"><BIconSliders /></a>
-    </li>-->
+    <li class="nav-item">
+      <a class="nav-link" href="#settings" @click="showSettings = true"><BIconSliders /></a>
+    </li>
     <li class="nav-item">
       <a class="nav-link" href="https://github.com/korzhyk/customs-calc" target="_blank">
         <BIconGithub />
@@ -121,6 +121,61 @@
     </li>
   </ul>
   <div class="version">версія {{ version }}</div>
+  <transition name="settings">
+    <div class="modal modal-backdrop d-block" tabindex="-1" v-if="showSettings" @click="showSettings = false">
+      <div id="settings" class="settings-dialog modal-dialog-centered" v-show="showSettings" @click.stop>
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h5 class="modal-title fw-light">Налаштування</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row mb-3">
+              <label for="limits_currency" class="col-8 col-form-label">Валюта розрахунку</label>
+              <div class="col">
+                <select class="form-select" id="limits_currency" v-model="limits_currency" :disabled="!rates.length">
+                  <option v-for="rate in rates" :value="rate.cc">
+                    {{ rate.cc }} – {{ rate.txt }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="vat_limit" class="col-8 col-form-label">Ліміт до сплати ПДВ</label>
+              <div class="col">
+                <input type="number" class="form-control" id="vat_limit" v-model="vat_limit">
+              </div>
+            </div>
+            <div class="mb-3">
+              <span class="float-end">{{toPercent(vat)}}%</span>
+              <label for="vat" class="form-label">Ставка ПДВ</label>
+              <input type="range" class="form-range" min="0" max="1" step="0.01" id="vat" v-model.number="vat">
+            </div>
+            <div class="row mb-3">
+              <label for="duty_limit" class="col-8 col-form-label">Мито</label>
+              <div class="col">
+                <input type="number" class="form-control" id="duty_limit" v-model="duty_limit">
+              </div>
+            </div>
+            <div class="mb-3">
+              <span class="float-end">{{toPercent(duty)}}%</span>
+              <label for="duty" class="form-label">Ставка мита</label>
+              <input type="range" class="form-range" min="0" max="1" step="0.01" id="duty" v-model.number="duty">
+            </div>
+            <div class="text-center">
+              <a href="#default" class="p-2" @click="defaultSettings">
+                <BIconArrowCounterclockwise class="me-2" />Скинути до початкових
+            </a>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#close" @click="showSettings = false">
+              <BIconXCircle width="2em" height="2em" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -128,11 +183,13 @@
   import { differenceInHours, formatRelative } from 'date-fns/esm'
   import { uk } from 'date-fns/esm/locale'
   import {
+    BIconArrowCounterclockwise,
     BIconCalculator,
     BIconCheckCircle,
     BIconExclamationCircle,
-    // BIconSliders,
-    BIconGithub
+    BIconGithub,
+    BIconSliders,
+    BIconXCircle
   } from 'bootstrap-icons-vue'
 
   import { version } from '../../package'
@@ -141,16 +198,26 @@
   import { getExchangeRates } from '../lib/api'
 
   const BASE = 'UAH'
+  const settings = {
+    vat: .2,
+    duty: .1,
+    vat_limit: 100,
+    duty_limit: 150,
+    limits_currency: 'EUR'
+  }
   let ratesUpdateInterval
 
   export default {
     mixins: [ saveState ],
     components: {
-      Currency,
+      BIconArrowCounterclockwise,
       BIconCalculator,
       BIconCheckCircle,
       BIconExclamationCircle,
-      BIconGithub
+      BIconGithub,
+      BIconSliders,
+      BIconXCircle,
+      Currency
     },
     directives: {
       focus: {
@@ -162,6 +229,7 @@
     },
     data() {
       return {
+        ...settings,
         version,
         base: BASE,
         value: null,
@@ -169,11 +237,7 @@
         rates: [],
         rates_updated_at: null,
         rates_updating: false,
-        vat: .2,
-        duty: .1,
-        vat_limit: 100,
-        duty_limit: 150,
-        limits_currency: 'EUR'
+        showSettings: false
       }
     },
     mounted () {
@@ -192,6 +256,7 @@
         return {
           cacheKey: 'calculator',
           onLoad: (key, value) => {
+            if (key === 'showSettings') return false
             if (key === 'rates_updated_at') {
               return new Date(value)
             }
@@ -209,6 +274,9 @@
         } finally {
           this.rates_updating = false
         }
+      },
+      defaultSettings () {
+        Object.assign(this, settings)
       },
       findRate (symbol) {
         const rate = this.rates.find(r => r.cc === symbol)

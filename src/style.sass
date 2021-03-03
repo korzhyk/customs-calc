@@ -1,14 +1,22 @@
-@import "bootstrap/scss/bootstrap-reboot.scss"
 @import "bootstrap/scss/bootstrap-grid.scss"
+@import "bootstrap/scss/bootstrap-reboot.scss"
 @import "bootstrap/scss/bootstrap-utilities.scss"
 @import "bootstrap/scss/_card.scss"
-@import "bootstrap/scss/forms/_floating-labels.scss"
-@import "bootstrap/scss/forms/_form-select.scss"
-@import "bootstrap/scss/forms/_form-control.scss"
+@import "bootstrap/scss/_modal.scss"
 @import "bootstrap/scss/_nav.scss"
 @import "bootstrap/scss/_spinners.scss"
 @import "bootstrap/scss/_tables.scss"
 @import "bootstrap/scss/_type.scss"
+@import "bootstrap/scss/forms/_floating-labels.scss"
+@import "bootstrap/scss/forms/_form-control.scss"
+@import "bootstrap/scss/forms/_form-range.scss"
+@import "bootstrap/scss/forms/_form-select.scss"
+@import "bootstrap/scss/forms/_labels.scss"
+
+@mixin when-dark
+  @media (prefers-color-scheme: dark)
+    @content
+
 
 html, body
   height: 100%
@@ -16,11 +24,52 @@ html, body
 body
   display: flex
   align-items: center
+  @include when-dark
+    color: $gray-100
+    background-color: $gray-900
 
-#calc
+a
+  @include when-dark
+    color: #5c9eff
+    &:hover
+      color: #96c0ff
+
+input[type="range"]::-webkit-slider-runnable-track
+  @include when-dark
+    background-color: $gray-900
+
+.table
+  @include when-dark
+    color: $gray-100
+
+.card
+  @include when-dark
+    background-color: $gray-700
+    border-color: $gray-600
+
+.text-black-50,
+.text-muted
+  @include when-dark
+    color: $gray-500 !important
+
+.form-control,
+.form-select
+  @include when-dark
+    color: $gray-100
+    background-color: $gray-800
+    border-color: $gray-600
+    &:focus
+      color: $white
+      background-color: $gray-900
+
+#calc, 
+#settings
   width: 100%
   max-width: 468px
   margin: auto
+
+#settings
+  padding: 1em
 
 .calculated-value
   @extend .font-monospace
@@ -30,7 +79,6 @@ body
 .tip-container
   @extend .d-flex
   @extend .align-items-center
-  @extend .mb-3
 
 .tip-icon
   @extend .col
@@ -46,32 +94,30 @@ body
   font-size: .8em
   opacity: .4
 
-@media (prefers-color-scheme: dark)
-  body
-    color: $gray-100
-    background-color: $gray-900
+.modal-backdrop
+  background-color: transparent
+  backdrop-filter: blur(.5em)
 
-  a
-    color: #5c9eff
-    &:hover
-      color: #96c0ff
+.settings-dialog
+  @extend .modal-dialog
+  .modal-header,
+  .modal-footer
+    @include when-dark
+      border-color: $gray-600
 
-  .text-black-50,
-  .text-muted
-    color: $gray-500 !important
+  .modal-content
+    @extend .shadow-lg
+    @include when-dark
+      color: $gray-100
+      background-color: $gray-800
+      border-color: $gray-600
+  
+.settings-enter-active,
+.settings-leave-active 
+  transition: all 0.25s ease
 
-  .table
-    color: $gray-100
+.settings-enter-from,
+.settings-leave-to
+  opacity: 0
+  transform: translate(0, 3em)
 
-  .card
-    background-color: $gray-700
-    border-color: $gray-600
-
-  .form-control,
-  .form-select
-    color: $gray-100
-    background-color: $gray-800
-    border-color: $gray-600
-    &:focus
-      color: $white
-      background-color: $gray-900
