@@ -14,4 +14,4 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn global add surge
-      - run: yarn run surge ./dist ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+      - run: yarn publish ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
