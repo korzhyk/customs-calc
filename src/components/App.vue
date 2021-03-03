@@ -151,7 +151,7 @@
               <input type="range" class="form-range" min="0" max="1" step="0.01" id="vat" v-model.number="vat">
             </div>
             <div class="row mb-3">
-              <label for="duty_limit" class="col-8 col-form-label">Мито</label>
+              <label for="duty_limit" class="col-8 col-form-label">Сплата мита від</label>
               <div class="col">
                 <input type="number" class="form-control" id="duty_limit" v-model="duty_limit">
               </div>
