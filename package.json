@@ -6,14 +6,14 @@
   "license": "MIT",
   "source": "src/index.html",
   "browserslist": "last 2 years",
-  "engines": {
-    "node": ">=14"
-  },
   "scripts": {
     "dev": "parcel serve src/index.html",
     "build": "parcel build --no-source-maps src/index.html",
     "postbuild": "workbox generateSW",
     "deploy": "surge ./dist"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
