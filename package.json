@@ -9,11 +9,15 @@
   "scripts": {
     "dev": "parcel serve src/index.html",
     "build": "parcel build --no-source-maps src/index.html",
-    "postbuild": "workbox generateSW",
-    "deploy": "surge ./dist"
+    "postbuild": "workbox generateSW"
   },
   "engines": {
     "node": ">=14"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": true
+    }
   },
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
@@ -36,6 +40,7 @@
     "@parcel/transformer-sass": "2.0.0-nightly.609",
     "@parcel/transformer-vue": "2.0.0-nightly.2231",
     "@parcel/transformer-webmanifest": "2.0.0-nightly.2231",
+    "autoprefixer": "^10.2.4",
     "parcel": "^2.0.0-nightly.607",
     "postcss": "^8.2.1",
     "sass": "^1.32.8",

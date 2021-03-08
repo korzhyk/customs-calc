@@ -24,6 +24,9 @@ html, body
 body
   display: flex
   align-items: center
+  font-feature-settings: 'kern'
+  text-rendering: optimizeLegibility
+  font-smoothing: antialiased
   @include when-dark
     color: $gray-100
     background-color: $gray-900
