@@ -13,5 +13,5 @@ jobs:
           node-version: '14'
       - run: yarn install
       - run: yarn build
-      - run: npm install -g surge
+      - run: yarn global add surge
       - run: npx surge ./dist ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
