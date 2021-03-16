@@ -92,6 +92,18 @@ input[type="range"]::-webkit-slider-runnable-track
   @extend .ps-0
   font-size: .9em
 
+.share
+  @extend .ms-3
+  @extend .fw-light 
+  @extend .position-relative
+  &:before
+    content: ''
+    position: absolute
+    top: -.75em
+    right: -.75em
+    bottom: -.75em
+    left: -.75em
+
 .version
   @extend .text-center
   font-size: .8em
@@ -123,4 +135,13 @@ input[type="range"]::-webkit-slider-runnable-track
 .settings-leave-to
   opacity: 0
   transform: translate(0, 3em) scale(0.9)
+
+.fade-enter-active,
+.fade-leave-active 
+  transition: opacity 0.5s ease
+
+.fade-enter-from,
+.fade-leave-to 
+  opacity: 0
+
 

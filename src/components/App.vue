@@ -66,7 +66,13 @@
         </tbody>
         <tfoot>
           <tr>
-            <th class="w-100">Всього</th>
+            <th class="w-100">
+              Всього
+              <transition name="fade" mode="out-in" appear v-if="value">
+                <a v-if="!shared" href="#share" class="share" @click="share" title="Поділитись"><BIconShare width="1rem" height="1rem" /></a>
+                <span v-else class="share"><BIconCheckCircle width="1em" height="1em" class="text-success" /> скопійовано</span>
+              </transition>
+            </th>
             <th class="calculated-value">
               <Currency :value="payVAT + payDuty" :title="format(convert(payVAT + payDuty, base, currency), currency)" :convert="currency" />
             </th>
@@ -189,7 +195,8 @@
     BIconExclamationCircle,
     BIconGithub,
     BIconSliders,
-    BIconXCircle
+    BIconXCircle,
+    BIconShare
   } from 'bootstrap-icons-vue'
 
   import { version } from '../../package'
@@ -217,6 +224,7 @@
       BIconGithub,
       BIconSliders,
       BIconXCircle,
+      BIconShare,
       Currency
     },
     directives: {
@@ -228,16 +236,19 @@
       }
     },
     data() {
+      const [value] = /[\d.,]+/.exec(location.hash) || ['']
+      const [currency] = /[A-Z]{3}/.exec(location.hash) || ['']
       return {
         ...settings,
         version,
         base: BASE,
-        value: null,
-        currency: 'USD',
+        value: Number(value.replace(',','.')) || 0,
+        currency,
         rates: [],
         rates_updated_at: null,
         rates_updating: false,
-        showSettings: false
+        showSettings: false,
+        shared: false
       }
     },
     mounted () {
@@ -255,13 +266,35 @@
       getSaveStateConfig () {
         return {
           cacheKey: 'calculator',
+          ignoreKeys: ['shared'],
           onLoad: (key, value) => {
-            if (key === 'showSettings') return false
-            if (key === 'rates_updated_at') {
-              return new Date(value)
+            switch (key) {
+              case 'showSettings':
+                return false
+              case 'rates_updated_at':
+                return new Date(value)
+              case 'value':
+              case 'currency':
+                return this[key] || value
+              default:
+               return value
             }
-            return value
           }
+        }
+      },
+      async share () {
+        this.shared = true
+        setTimeout(() => (this.shared = false), 3e3)
+        try {
+          const overFormatted = this.format(this.payVAT + this.payDuty, this.base)
+          const text = this.payVAT
+            ? (this.payDuty
+            ? `Повний попандос: ${overFormatted}`
+            : `Тільки мито заплатити: ${overFormatted}`) + ` https://customs-calc.pp.ua/#${this.value}${this.currency}`
+            : `Порахувати митні платежі для посилки https://customs-calc.pp.ua`
+          await navigator.clipboard.writeText(text)
+        } catch (err) {
+          console.error('Failed to copy: ', err)
         }
       },
       async updateRates () {
