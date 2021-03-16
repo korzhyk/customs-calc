@@ -266,7 +266,7 @@
       getSaveStateConfig () {
         return {
           cacheKey: 'calculator',
-          ignoreKeys: ['shared'],
+          ignoreProperties: ['shared'],
           onLoad: (key, value) => {
             switch (key) {
               case 'showSettings':
