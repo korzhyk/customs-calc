@@ -70,7 +70,7 @@
               Всього
               <transition name="fade" mode="out-in" appear v-if="value">
                 <a v-if="!shared" href="#share" class="share" @click="share" title="Поділитись"><BIconShare width="1rem" height="1rem" /></a>
-                <span v-else class="share"><BIconCheckCircle width="1em" height="1em" class="text-success" /> скопійовано</span>
+                <span v-else class="share"><BIconCheckCircle width="1rem" height="1rem" class="text-success" /> скопійовано</span>
               </transition>
             </th>
             <th class="calculated-value">
@@ -290,7 +290,7 @@
           const text = this.payVAT
             ? (this.payDuty
             ? `Повний попандос: ${overFormatted}`
-            : `Тільки мито заплатити: ${overFormatted}`) + ` https://customs-calc.pp.ua/#${this.value}${this.currency}`
+            : `Тільки ПДВ заплатити: ${overFormatted}`) + ` https://customs-calc.pp.ua/#${this.value}${this.currency}`
             : `Порахувати митні платежі для посилки https://customs-calc.pp.ua`
           await navigator.clipboard.writeText(text)
         } catch (err) {

@@ -6,12 +6,12 @@ function propsComparator (prop = 'id') {
 
 export function getExchangeRates () {
   return fetch(API_ENDPOINT)
-  .then(r => r.json())
-  .then(rates => {
-    if (rates.length) {
-      rates.push({ "r030": 980,"txt":"Українська гривня","rate":1,"cc":"UAH" })
-      return rates.sort(propsComparator('cc'))
-    }
-    throw new Error('No exchange rates were received.')
-  })
+    .then(r => r.json())
+    .then(rates => {
+      if (rates.length) {
+        rates.push({ r030: 980, txt: 'Українська гривня', rate: 1, cc: 'UAH' })
+        return rates.sort(propsComparator('cc'))
+      }
+      throw new Error('No exchange rates were received.')
+    })
 }
