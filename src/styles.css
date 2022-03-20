@@ -1,0 +1,23 @@
+html {
+  @apply dark:bg-gray-800;
+}
+html,
+body {
+  @apply h-full;
+}
+
+body {
+  @apply flex items-center;
+}
+
+a:hover {
+  @apply text-blue-600/90 dark:text-blue-100/70;
+}
+a:hover svg {
+  @apply fill-current;
+}
+
+dt::after {
+  @apply opacity-0;
+  content: ':';
+}
