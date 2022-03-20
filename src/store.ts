@@ -29,13 +29,13 @@ try {
   if (localStorage[saveStateKey]) {
     const savedState = JSON.parse(localStorage[saveStateKey])
     Object.assign(initialState, savedState)
-    console.info('App state sucessfully restored')
+    console.info('🚛 App state sucessfully restored')
   } else {
     localStorage.clear()
-    console.info('No saved app state')
+    console.info('🪹 No saved app state')
   }
 } catch (e) {
-  console.info('There is problem when trying to recover app state.', e.message)
+  console.info('💔 There is problem when trying to recover app state', e.message)
 }
 
 const [state, setState] = createStore(initialState)
