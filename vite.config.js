@@ -16,7 +16,7 @@ export default defineConfig({
       start_url: '/',
       background_color: '#fff',
       theme_color: '#fff',
-      description: 'Простий застосунок для розрахунку митних платежів.',
+      description: 'Простий застосунок для розрахунку митних платежів',
       icons: [{
         src: 'favicon.svg',
         sizes: '256x256',
@@ -31,6 +31,12 @@ export default defineConfig({
         src: 'pwa-512x512.png',
         sizes: '512x512',
         type: 'image/png'
+      },
+      {
+        src: 'pwa-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable'
       }]
     }
   })],

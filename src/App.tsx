@@ -90,7 +90,7 @@ export default function App() {
         </div>
       </form>
       <p
-        class="text-sm text-gray-400 text-center mb-6 cursor-pointer"
+        class="text-sm text-gray-600 text-center mb-6 cursor-pointer"
         title="натисніть для оновлення даних"
         onClick={debounce(fetchRates, 1e3, { leading: true })}
       >
