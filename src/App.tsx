@@ -46,9 +46,8 @@ export default function App() {
     api.loadRates()
   }
   const valueChanged = (e: InputEvent) => {
-    const value = Number(e.target.value) || 0
-    if (value >= 0) {
-      setState({ value })
+    if (e.target.value > 0) {
+      setState('value', Number(e.target.value))
     }
   }
   onMount(fetchRates)
