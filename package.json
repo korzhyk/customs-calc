@@ -13,11 +13,12 @@
     "node": ">=12"
   },
   "devDependencies": {
+    "mitt": "^3.0.0",
     "vite": "2.8.6",
+    "vite-plugin-pwa": "0.11.13",
     "vite-plugin-solid": "2.2.6",
     "vite-plugin-solid-svg": "0.2.0",
     "vite-plugin-windicss": "1.8.3",
-    "vite-plugin-pwa": "0.11.13",
     "windicss": "3.5.1"
   },
   "dependencies": {
