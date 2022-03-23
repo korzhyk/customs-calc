@@ -17,7 +17,7 @@ export default function About () {
         </li>
         <li class='mx-1'>
           <a href='https://www.comebackalive.in.ua' target='_blank' title="Повернись живим">
-            <div class='p-0.5 text-black border border-black hover:text-blue-600 hover:border-yellow-300 hover:bg-yellow-300'>
+            <div class='p-0.5 text-black rounded-full border border-black dark:border-yellow-300/50 dark:text-blue-300/50 hover:text-blue-600 hover:border-yellow-300 hover:bg-yellow-300'>
               <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' />
               </svg>
