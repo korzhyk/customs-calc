@@ -2,7 +2,7 @@ import { version } from '../package.json'
 
 export default function About () {
   return (
-    <footer class='text-center text-gray-600 mt-16 mb-2'>
+    <footer class='text-center mt-16 mb-2'>
       <ul class='flex justify-center mb-2'>
         <li class='mx-1'>
           <a href='https://github.com/korzhyk/customs-calc' target='_blank'>
@@ -24,7 +24,7 @@ export default function About () {
           </a>
         </li>
       </ul>
-      <div class='text-xs'>версія {version}</div>
+      <div class='text-xs text-gray-600 dark:text-gray-400'>версія {version}</div>
     </footer>
   )
 }
