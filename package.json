@@ -1,6 +1,6 @@
 {
   "name": "customs-calc",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "VAT and duty import fee calculator",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "serve": "vite preview"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "devDependencies": {
     "mitt": "^3.0.0",
