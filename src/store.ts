@@ -9,18 +9,20 @@ const initialState = {
   rates: {},
   taxes: [
     {
-      name: 'ПДВ',
-      currency: 'EUR',
-      rule: 'over',
-      limit: 100,
-      tax: 0.2
-    },
-    {
+      id: 'duty',
       name: 'Мито',
       currency: 'EUR',
       rule: 'over',
       limit: 150,
       tax: 0.1
+    },
+    {
+      id: 'tax',
+      name: 'ПДВ',
+      currency: 'EUR',
+      rule: 'over',
+      limit: 100,
+      tax: 0.2
     }
   ]
 }

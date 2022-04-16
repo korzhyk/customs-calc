@@ -8,6 +8,12 @@ import { state, setState, saveState } from './store'
 import debounce from 'lodash.debounce'
 
 const calcTax = (tax, value, currency) => {
+  if (tax.id === 'tax') {
+    const duty = state.taxes.find(t => t.id === 'duty')
+    if (duty) {
+      value += calcTax(duty, value, currency)
+    }
+  }
   const calculated = value * getRate(currency, tax.currency)
   if (calculated > tax.limit) {
     return (tax.rule === 'over' ? calculated - tax.limit : calculated) * tax.tax
