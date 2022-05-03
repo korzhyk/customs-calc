@@ -21,7 +21,7 @@ const initialState = {
       name: 'ПДВ',
       currency: 'EUR',
       rule: 'over',
-      limit: 100,
+      limit: 150,
       tax: 0.2
     }
   ]
