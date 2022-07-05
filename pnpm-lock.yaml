@@ -4,18 +4,18 @@ specifiers:
   currency.js: 2.0.4
   lodash.debounce: 4.0.8
   mitt: 3.0.0
-  solid-js: 1.3.13
+  solid-js: 1.4.6
   vite: 2.8.6
   vite-plugin-pwa: 0.11.13
   vite-plugin-solid: 2.2.6
   vite-plugin-solid-svg: 0.2.0
   vite-plugin-windicss: 1.8.6
-  windicss: 3.5.1
+  windicss: 3.5.6
 
 dependencies:
   currency.js: 2.0.4
   lodash.debounce: 4.0.8
-  solid-js: 1.3.13
+  solid-js: 1.4.6
 
 devDependencies:
   mitt: 3.0.0
@@ -24,7 +24,7 @@ devDependencies:
   vite-plugin-solid: 2.2.6
   vite-plugin-solid-svg: 0.2.0_vite@2.8.6
   vite-plugin-windicss: 1.8.6_vite@2.8.6
-  windicss: 3.5.1
+  windicss: 3.5.6
 
 packages:
 
@@ -2704,10 +2704,10 @@ packages:
       object-inspect: 1.12.2
     dev: true
 
-  /solid-js/1.3.13:
-    resolution: {integrity: sha512-1EBEIW9u2yqT5QNjFdvz/tMAoKsDdaRA2Jbgykd2Dt13Ia0D4mV+BFvPkOaseSyu7DsMKS23+ZZofV8BVKmpuQ==}
+  /solid-js/1.4.6:
+    resolution: {integrity: sha512-vF0x5qbVCDi8zlEyN92y/i+pS7QNYh3uNvbSyUYDhLifKuYqGcJwGxbH9zzDX5sR8o1ijgzI6BEAXlcR7Mkkjw==}
 
-  /solid-refresh/0.4.1_solid-js@1.3.13:
+  /solid-refresh/0.4.1_solid-js@1.4.6:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -2715,7 +2715,7 @@ packages:
       '@babel/generator': 7.18.7
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.18.7
-      solid-js: 1.3.13
+      solid-js: 1.4.6
     dev: true
 
   /source-map-js/1.0.2:
@@ -2980,8 +2980,8 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.6
       babel-preset-solid: 1.4.6_@babel+core@7.18.6
       merge-anything: 5.0.2
-      solid-js: 1.3.13
-      solid-refresh: 0.4.1_solid-js@1.3.13
+      solid-js: 1.4.6
+      solid-refresh: 0.4.1_solid-js@1.4.6
       vite: 2.8.6
     transitivePeerDependencies:
       - less
@@ -3048,12 +3048,6 @@ packages:
       is-number-object: 1.0.7
       is-string: 1.0.7
       is-symbol: 1.0.4
-    dev: true
-
-  /windicss/3.5.1:
-    resolution: {integrity: sha512-E1hYZATcZFci/XhGS0sJAMRxULjnK+glNukE78Ku7xeb3jxgMY55fFOdIrav+GjQCsgR+IZxPq9/DwmO6eyc4Q==}
-    engines: {node: '>= 12'}
-    hasBin: true
     dev: true
 
   /windicss/3.5.6:
