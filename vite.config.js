@@ -16,7 +16,7 @@ export default defineConfig({
       start_url: '/',
       background_color: '#fff',
       theme_color: '#fff',
-      description: 'Простий застосунок для розрахунку митних платежів',
+      description: 'Калькулятор митних платежів для міжнародних поштових відпралень',
       icons: [{
         src: 'favicon.svg',
         sizes: '256x256',
