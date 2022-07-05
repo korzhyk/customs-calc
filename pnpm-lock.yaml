@@ -10,7 +10,7 @@ specifiers:
   vite-plugin-solid: 2.2.6
   vite-plugin-solid-svg: 0.2.0
   vite-plugin-windicss: 1.8.6
-  windicss: 3.5.1
+  windicss: 3.5.6
 
 dependencies:
   currency.js: 2.0.4
@@ -24,7 +24,7 @@ devDependencies:
   vite-plugin-solid: 2.2.6
   vite-plugin-solid-svg: 0.2.0_vite@2.8.6
   vite-plugin-windicss: 1.8.6_vite@2.8.6
-  windicss: 3.5.1
+  windicss: 3.5.6
 
 packages:
 
@@ -3048,12 +3048,6 @@ packages:
       is-number-object: 1.0.7
       is-string: 1.0.7
       is-symbol: 1.0.4
-    dev: true
-
-  /windicss/3.5.1:
-    resolution: {integrity: sha512-E1hYZATcZFci/XhGS0sJAMRxULjnK+glNukE78Ku7xeb3jxgMY55fFOdIrav+GjQCsgR+IZxPq9/DwmO6eyc4Q==}
-    engines: {node: '>= 12'}
-    hasBin: true
     dev: true
 
   /windicss/3.5.6:
