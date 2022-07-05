@@ -8,7 +8,7 @@ function uniq(array) {
 
 export default function Currency(props) {
   const merged = mergeProps(
-    { className: 'cursor-pointer', value: 0, currency: BASE_CURRENCY, toggle: [BASE_CURRENCY] },
+    { classList: 'cursor-pointer', value: 0, currency: BASE_CURRENCY, toggle: [BASE_CURRENCY] },
     props
   )
   let toggle = uniq(merged.toggle)
@@ -24,7 +24,7 @@ export default function Currency(props) {
     toggle = uniq(merged.toggle)
   })
   return (
-    <span class={merged.className} onClick={onClick}>
+    <span classList={merged.classList} onClick={onClick}>
       {format(merged.value * getRate(merged.currency, getDisplayCurrency()), getDisplayCurrency())}
     </span>
   )
