@@ -19,7 +19,7 @@
     "vite-plugin-solid": "2.2.6",
     "vite-plugin-solid-svg": "0.2.0",
     "vite-plugin-windicss": "1.8.6",
-    "windicss": "3.5.1"
+    "windicss": "3.5.6"
   },
   "dependencies": {
     "currency.js": "2.0.4",
