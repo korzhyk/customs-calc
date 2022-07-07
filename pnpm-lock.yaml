@@ -4,7 +4,7 @@ specifiers:
   currency.js: 2.0.4
   lodash.debounce: 4.0.8
   mitt: 3.0.0
-  solid-js: 1.4.6
+  solid-js: 1.4.7
   vite: 2.9.13
   vite-plugin-pwa: 0.12.2
   vite-plugin-solid: 2.2.6
@@ -15,7 +15,7 @@ specifiers:
 dependencies:
   currency.js: 2.0.4
   lodash.debounce: 4.0.8
-  solid-js: 1.4.6
+  solid-js: 1.4.7
 
 devDependencies:
   mitt: 3.0.0
@@ -2709,10 +2709,10 @@ packages:
       object-inspect: 1.12.2
     dev: true
 
-  /solid-js/1.4.6:
-    resolution: {integrity: sha512-vF0x5qbVCDi8zlEyN92y/i+pS7QNYh3uNvbSyUYDhLifKuYqGcJwGxbH9zzDX5sR8o1ijgzI6BEAXlcR7Mkkjw==}
+  /solid-js/1.4.7:
+    resolution: {integrity: sha512-u3hoe5w3xseAc/8zLwYaQVGanWXknMMQkzryNz7lOPy2ygW6DhCtfMseun4kLflRNRzrUUpTV3W5p7j2SGcHCQ==}
 
-  /solid-refresh/0.4.1_solid-js@1.4.6:
+  /solid-refresh/0.4.1_solid-js@1.4.7:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -2720,7 +2720,7 @@ packages:
       '@babel/generator': 7.18.7
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.18.7
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: true
 
   /source-map-js/1.0.2:
@@ -2985,8 +2985,8 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.6
       babel-preset-solid: 1.4.6_@babel+core@7.18.6
       merge-anything: 5.0.2
-      solid-js: 1.4.6
-      solid-refresh: 0.4.1_solid-js@1.4.6
+      solid-js: 1.4.7
+      solid-refresh: 0.4.1_solid-js@1.4.7
       vite: 2.9.13
     transitivePeerDependencies:
       - less
