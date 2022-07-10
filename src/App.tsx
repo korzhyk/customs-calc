@@ -2,10 +2,13 @@ import 'virtual:windi.css'
 import './styles.css'
 import { createMemo, createEffect, onMount, Show, For, createSelector } from 'solid-js'
 import Currency from './Currency'
+import { currencyFormats } from './currencies'
 import About from './About'
 import api, { BASE_CURRENCY, getRates as rates, getRate } from './bank'
 import { state, setState, saveState } from './store'
 import debounce from 'lodash.debounce'
+
+const popularCurrencies = Object.keys(currencyFormats)
 
 const calcTax = (tax, value, currency) => {
   if (tax.id === 'tax') {
@@ -81,17 +84,28 @@ export default function App() {
           />
           <select
             id="currency"
-            class="block text-4xl font-mono font-extrabold rounded-lg py-4 pl-1 bg-transparent dark:bg-transparent focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+            class="block max-w-2.5em text-4xl font-mono font-extrabold rounded-lg py-4 pl-1 bg-transparent dark:bg-transparent focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
             value={state.currency}
             onChange={(e) => setState({ currency: e.target.value })}
           >
-            <For each={Object.keys(rates()).sort()}>
-              {(item) => (
-                <option value={item} selected={selectedCurrency(item)}>
-                  {item}
-                </option>
-              )}
-            </For>
+            <optgroup label="Популярні">
+              <For each={Object.keys(rates()).filter(c => ~popularCurrencies.indexOf(c)).sort()}>
+                {(item) => (
+                  <option value={item} selected={selectedCurrency(item)}>
+                    {item} {rates()[item].txt}
+                  </option>
+                )}
+              </For>
+            </optgroup>
+            <optgroup label="Інші">
+              <For each={Object.keys(rates()).filter(c => !~popularCurrencies.indexOf(c)).sort()}>
+                {(item) => (
+                  <option value={item} selected={selectedCurrency(item)}>
+                    {item} {rates()[item].txt}
+                  </option>
+                )}
+              </For>
+            </optgroup>
           </select>
         </div>
       </form>
