@@ -5,8 +5,8 @@ specifiers:
   lodash.debounce: 4.0.8
   mitt: 3.0.0
   solid-js: 1.4.6
-  vite: 2.8.6
-  vite-plugin-pwa: 0.11.13
+  vite: 2.9.13
+  vite-plugin-pwa: 0.12.2
   vite-plugin-solid: 2.2.6
   vite-plugin-solid-svg: 0.2.0
   vite-plugin-windicss: 1.8.6
@@ -19,11 +19,11 @@ dependencies:
 
 devDependencies:
   mitt: 3.0.0
-  vite: 2.8.6
-  vite-plugin-pwa: 0.11.13_vite@2.8.6
+  vite: 2.9.13
+  vite-plugin-pwa: 0.12.2_vite@2.9.13
   vite-plugin-solid: 2.2.6
-  vite-plugin-solid-svg: 0.2.0_vite@2.8.6
-  vite-plugin-windicss: 1.8.6_vite@2.8.6
+  vite-plugin-solid-svg: 0.2.0_vite@2.9.13
+  vite-plugin-windicss: 1.8.6_vite@2.9.13
   windicss: 3.5.6
 
 packages:
@@ -1631,7 +1631,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
   /convert-source-map/1.8.0:
@@ -2559,6 +2559,11 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /pretty-bytes/6.0.0:
+    resolution: {integrity: sha512-6UqkYefdogmzqAZWzJ7laYeJnaXDy2/J+ZqiiMtS7t7OfpXWTlaeGMwX8U6EFvPV/YWWEKRkS8hKS4k60WHTOg==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: true
+
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
@@ -2946,16 +2951,16 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.11.13_vite@2.8.6:
-    resolution: {integrity: sha512-Ssj14m3TRVLfkFEAWSMcFE2d1cSdEZyrVTzfY2lSL+umHYvcIFHVDAY143sygtBCb44OPczsAOmWwBTxwOvh7g==}
+  /vite-plugin-pwa/0.12.2_vite@2.9.13:
+    resolution: {integrity: sha512-XK2oi1YZkoc1J8fyerNYxyh/yfb+INdrdOW/mOOD5DBLq7jVPxHQuncIhqiREbGOMlY/xMe9CSE7QZ9xIAEf7A==}
     peerDependencies:
-      vite: ^2.0.0
+      vite: ^2.0.0 || ^3.0.0-0
     dependencies:
       debug: 4.3.4
       fast-glob: 3.2.11
-      pretty-bytes: 5.6.0
+      pretty-bytes: 6.0.0
       rollup: 2.75.7
-      vite: 2.8.6
+      vite: 2.9.13
       workbox-build: 6.5.3
       workbox-window: 6.5.3
     transitivePeerDependencies:
@@ -2963,14 +2968,14 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid-svg/0.2.0_vite@2.8.6:
+  /vite-plugin-solid-svg/0.2.0_vite@2.9.13:
     resolution: {integrity: sha512-e/klkfj8ibedpiwcek83R+adYoMZUfQJ2fUghUVK1a4pB1X8eZ/d1mkdu/KcxXH8acjTeFk2UZvarhFOc1KRNg==}
     peerDependencies:
       vite: ^2.4.4
     dependencies:
       fast-glob: 3.2.11
       svgo: 2.8.0
-      vite: 2.8.6
+      vite: 2.9.13
     dev: true
 
   /vite-plugin-solid/2.2.6:
@@ -2982,7 +2987,7 @@ packages:
       merge-anything: 5.0.2
       solid-js: 1.4.6
       solid-refresh: 0.4.1_solid-js@1.4.6
-      vite: 2.8.6
+      vite: 2.9.13
     transitivePeerDependencies:
       - less
       - sass
@@ -2990,7 +2995,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.8.6_vite@2.8.6:
+  /vite-plugin-windicss/1.8.6_vite@2.9.13:
     resolution: {integrity: sha512-D4G4qmumgklPiPrq/ZALqq8Mby6krskFVShbmb5c+0VCSsLUN96qyFRTwi81rNIHwFvlbpqflgh+BpUM/9VjQg==}
     peerDependencies:
       vite: ^2.0.1
@@ -2998,14 +3003,14 @@ packages:
       '@windicss/plugin-utils': 1.8.6
       debug: 4.3.4
       kolorist: 1.5.1
-      vite: 2.8.6
+      vite: 2.9.13
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/2.8.6:
-    resolution: {integrity: sha512-e4H0QpludOVKkmOsRyqQ7LTcMUDF3mcgyNU4lmi0B5JUbe0ZxeBBl8VoZ8Y6Rfn9eFKYtdXNPcYK97ZwH+K2ug==}
+  /vite/2.9.13:
+    resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
