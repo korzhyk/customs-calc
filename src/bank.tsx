@@ -34,6 +34,9 @@ export default {
       .then((json) => {
         const rates = { ...getRates() }
         json.reduce((acc, rate) => {
+          if (rate.cc === 'RUB') {
+            return acc
+          }
           return Object.assign(acc, { [rate.cc]: rate })
         }, rates)
         setState({ rates, ratesUpdatedAt: Date.now() })
