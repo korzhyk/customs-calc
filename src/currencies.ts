@@ -4,6 +4,7 @@ const cache = new Map()
 const currencyFormats = {
   BGN: ['лв.', ' ', ',', '#!'],
   CZK: ['Kč', ' ', ',', '#!'],
+  CNY: ['¥', ' ', ',', '#!'],
   EUR: ['€'],
   GBP: ['£'],
   PLN: ['zł', ' ', ',', '# !'],
