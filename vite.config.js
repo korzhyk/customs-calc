@@ -2,11 +2,10 @@ import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import SolidJS from 'vite-plugin-solid'
-import SolidSVG from 'vite-plugin-solid-svg'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [SolidJS(), SolidSVG(), WindiCSS(), VitePWA({
+  plugins: [SolidJS(), WindiCSS(), VitePWA({
     registerType: 'autoUpdate',
     includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
     manifest: {
