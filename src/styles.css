@@ -21,3 +21,21 @@ dt::after {
   @apply opacity-0;
   content: ':';
 }
+
+.custom-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.custom-select::after {
+  content: "";
+  display: block;
+  width: .35em;
+  height: .35em;
+  margin-left: .1em;
+  border-color: currentColor;
+  border-width: 0 0 .1em .1em;
+  transform: rotateZ(-45deg);
+  transform-origin: top;
+}

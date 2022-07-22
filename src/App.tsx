@@ -75,38 +75,36 @@ export default function App() {
             min="0"
             type="number"
             id="cost"
-            class="w-full block rounded-lg text-right p-4 pr-1 text-right text-4xl font-mono font-extrabold bg-transparent dark:bg-transparent focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="w-full block rounded-l-lg text-right p-4 pr-1 text-right text-4xl font-mono font-extrabold bg-transparent dark:bg-transparent dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline outline-blue-500 outline-3"
             placeholder="100"
             required
             value={state.value}
             onChange={valueChanged}
             onKeyUp={valueChanged}
           />
-          <select
-            id="currency"
-            class="block max-w-2.5em text-4xl font-mono font-extrabold rounded-lg py-4 pl-1 bg-transparent dark:bg-transparent focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
-            value={state.currency}
-            onChange={(e) => setState({ currency: e.target.value })}
-          >
-            <optgroup label="Популярні">
-              <For each={Object.keys(rates()).filter(c => ~popularCurrencies.indexOf(c)).sort()}>
-                {(item) => (
-                  <option value={item} selected={selectedCurrency(item)}>
-                    {item} {rates()[item].txt}
-                  </option>
-                )}
-              </For>
-            </optgroup>
-            <optgroup label="Інші">
-              <For each={Object.keys(rates()).filter(c => !~popularCurrencies.indexOf(c)).sort()}>
-                {(item) => (
-                  <option value={item} selected={selectedCurrency(item)}>
-                    {item} {rates()[item].txt}
-                  </option>
-                )}
-              </For>
-            </optgroup>
-          </select>
+          <div className="custom-select block text-4xl font-mono font-extrabold rounded-r-lg p-4 pl-1 bg-transparent dark:bg-transparent dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus-within:outline outline-blue-500 outline-3 ">
+           <select id="currency" value={state.currency} onChange={(e) => setState({ currency: e.target.value })}  class="absolute inset-0 opacity-0 z-index-1">
+             <optgroup label="Популярні">
+                <For each={Object.keys(rates()).filter(c => ~popularCurrencies.indexOf(c)).sort()}>
+                  {(item) => (
+                    <option value={item} selected={selectedCurrency(item)}>
+                      {item} {rates()[item].txt}
+                    </option>
+                  )}
+                </For>
+              </optgroup>
+              <optgroup label="Інші">
+                <For each={Object.keys(rates()).filter(c => !~popularCurrencies.indexOf(c)).sort()}>
+                  {(item) => (
+                    <option value={item} selected={selectedCurrency(item)}>
+                      {item} {rates()[item].txt}
+                    </option>
+                  )}
+                </For>
+              </optgroup>
+            </select>
+            {state.currency}
+          </div>
         </div>
       </form>
       <p
