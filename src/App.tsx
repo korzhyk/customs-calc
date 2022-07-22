@@ -150,7 +150,7 @@ export default function App() {
       </For>
       <Show when={taxesTotal()}>
         <hr class="mb-2 dark:border-gray-500" />
-        <dl class="table w-full font-mono font-bold text-lg dark:text-gray-300">
+        <dl class="table w-full font-mono font-bold text-lg dark:text-gray-300" tabindex="0">
           <dt class="table-cell px-2 -mb-px">
             Всього<i class="opacity-0">:</i>
           </dt>
