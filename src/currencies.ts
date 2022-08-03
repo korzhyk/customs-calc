@@ -18,7 +18,7 @@ const getFormatOptions = (currency) => {
 
   const options = { symbol: currency, pattern: '# !' }
   if (currency in currencyFormats) {
-    const [symbol, separator, decimal, pattern] = currencyFormats[currency]
+    const [symbol, separator = ',', decimal = '.', pattern = '!#'] = currencyFormats[currency]
     Object.assign(options, { symbol, separator, decimal, pattern })
   }
   cache.set(currency, options)
