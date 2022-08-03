@@ -115,7 +115,7 @@ export default function App() {
         <Show when={state.ratesUpdatedAt} fallback={<span>Дані курсів валют не завантажено!</span>}>
           {(ts) => (
             <span>
-              Дані НБУ на{' '}
+              Дані <abbr title="Національний банк України">НБУ</abbr> на{' '}
               <time datetime={new Date(ts).toISOString()}>{new Date(ts).toLocaleString()}</time>
             </span>
           )}
