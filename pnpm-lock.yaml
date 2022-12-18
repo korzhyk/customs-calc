@@ -5,7 +5,7 @@ specifiers:
   lodash.debounce: 4.0.8
   mitt: 3.0.0
   solid-js: 1.4.8
-  vite: 4.0.1
+  vite: 4.0.2
   vite-plugin-pwa: 0.14.0
   vite-plugin-solid: 2.5.0
   vite-plugin-windicss: 1.8.10
@@ -18,10 +18,10 @@ dependencies:
 
 devDependencies:
   mitt: 3.0.0
-  vite: 4.0.1
-  vite-plugin-pwa: 0.14.0_vite@4.0.1
-  vite-plugin-solid: 2.5.0_solid-js@1.4.8+vite@4.0.1
-  vite-plugin-windicss: 1.8.10_vite@4.0.1
+  vite: 4.0.2
+  vite-plugin-pwa: 0.14.0_vite@4.0.2
+  vite-plugin-solid: 2.5.0_solid-js@1.4.8+vite@4.0.2
+  vite-plugin-windicss: 1.8.10_vite@4.0.2
   windicss: 3.5.6
 
 packages:
@@ -2920,7 +2920,7 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.14.0_vite@4.0.1:
+  /vite-plugin-pwa/0.14.0_vite@4.0.2:
     resolution: {integrity: sha512-3wZx47PLWTckOQhc8Y6YZjAbNZ89Ovh4TdCT97MGhgl7aFd2LUekVnAmIgFwgMqyxzJ93nmkPF/ALpEW/i2qCg==}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
@@ -2930,7 +2930,7 @@ packages:
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
       rollup: 3.7.3
-      vite: 4.0.1
+      vite: 4.0.2
       workbox-build: 6.5.4
       workbox-window: 6.5.4
     transitivePeerDependencies:
@@ -2938,7 +2938,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid/2.5.0_solid-js@1.4.8+vite@4.0.1:
+  /vite-plugin-solid/2.5.0_solid-js@1.4.8+vite@4.0.2:
     resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
@@ -2950,13 +2950,13 @@ packages:
       merge-anything: 5.1.4
       solid-js: 1.4.8
       solid-refresh: 0.4.1_solid-js@1.4.8
-      vite: 4.0.1
-      vitefu: 0.2.3_vite@4.0.1
+      vite: 4.0.2
+      vitefu: 0.2.3_vite@4.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.8.10_vite@4.0.1:
+  /vite-plugin-windicss/1.8.10_vite@4.0.2:
     resolution: {integrity: sha512-scywsuzo46lcTBohspmF0WiwhWEte6p+OUVrX4yr7VMRvLHMHVfLtJReyD5pppjijG7YOwVsZn7XBWWZtF658Q==}
     peerDependencies:
       vite: ^2.0.1 || ^3.0.0 || ^4.0.0
@@ -2964,14 +2964,14 @@ packages:
       '@windicss/plugin-utils': 1.8.10
       debug: 4.3.4
       kolorist: 1.6.0
-      vite: 4.0.1
+      vite: 4.0.2
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/4.0.1:
-    resolution: {integrity: sha512-kZQPzbDau35iWOhy3CpkrRC7It+HIHtulAzBhMqzGHKRf/4+vmh8rPDDdv98SWQrFWo6//3ozwsRmwQIPZsK9g==}
+  /vite/4.0.2:
+    resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3003,7 +3003,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu/0.2.3_vite@4.0.1:
+  /vitefu/0.2.3_vite@4.0.2:
     resolution: {integrity: sha512-75l7TTuU8isAhz1QFtNKjDkqjxvndfMC1AfIMjJ0ZQ59ZD0Ow9QOIsJJX16Wv9PS8f+zMzp6fHy5cCbKG/yVUQ==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -3011,7 +3011,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.0.1
+      vite: 4.0.2
     dev: true
 
   /webidl-conversions/4.0.2:
