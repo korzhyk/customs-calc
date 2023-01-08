@@ -121,7 +121,7 @@ export default function App() {
           )}
         </Show>
       </p>
-      <dl class="table w-full mb-1 font-mono dark:text-gray-300">
+      <dl class="table w-full mb-6 font-mono dark:text-gray-300 text-opacity-75">
         <dt class="table-cell px-2 -mb-px">
           Вартість<i class="opacity-0">:</i>
         </dt>
