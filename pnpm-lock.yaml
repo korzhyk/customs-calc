@@ -6,7 +6,7 @@ specifiers:
   mitt: 3.0.0
   solid-js: 1.4.8
   vite: 4.1.1
-  vite-plugin-pwa: 0.14.1
+  vite-plugin-pwa: 0.14.2
   vite-plugin-solid: 2.5.0
   vite-plugin-windicss: 1.8.10
   windicss: 3.5.6
@@ -19,7 +19,7 @@ dependencies:
 devDependencies:
   mitt: 3.0.0
   vite: 4.1.1
-  vite-plugin-pwa: 0.14.1_vite@4.1.1
+  vite-plugin-pwa: 0.14.2_vite@4.1.1
   vite-plugin-solid: 2.5.0_solid-js@1.4.8+vite@4.1.1
   vite-plugin-windicss: 1.8.10_vite@4.1.1
   windicss: 3.5.6
@@ -1552,7 +1552,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-replace/5.0.1_rollup@3.7.3:
+  /@rollup/plugin-replace/5.0.1_rollup@3.12.1:
     resolution: {integrity: sha512-Z3MfsJ4CK17BfGrZgvrcp/l6WXoKb0kokULO+zt/7bmcyayokDaQ2K3eDJcRLCTAlp5FPI4/gz9MHAsosz4Rag==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1561,9 +1561,9 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
+      '@rollup/pluginutils': 5.0.2_rollup@3.12.1
       magic-string: 0.26.7
-      rollup: 3.7.3
+      rollup: 3.12.1
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
@@ -1578,7 +1578,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/pluginutils/5.0.2_rollup@3.7.3:
+  /@rollup/pluginutils/5.0.2_rollup@3.12.1:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1590,7 +1590,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.7.3
+      rollup: 3.12.1
     dev: true
 
   /@surma/rollup-plugin-off-main-thread/2.2.3:
@@ -2662,14 +2662,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/3.7.3:
-    resolution: {integrity: sha512-7e68MQbAWCX6mI4/0lG1WHd+NdNAlVamg0Zkd+8LZ/oXojligdGnCNyHlzXqXCZObyjs5FRc3AH0b17iJESGIQ==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
@@ -2928,16 +2920,16 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.14.1_vite@4.1.1:
-    resolution: {integrity: sha512-5zx7yhQ8RTLwV71+GA9YsQQ63ALKG8XXIMqRJDdZkR8ZYftFcRgnzM7wOWmQZ/DATspyhPih5wCdcZnAIsM+mA==}
+  /vite-plugin-pwa/0.14.2_vite@4.1.1:
+    resolution: {integrity: sha512-3nTW1LX5i4l2qeuT0ypGyo52KtXagQoW4qdpMxHyUS/qvloa3BHLytQQfdNbU3cXTqV+cfuN99RXXKHiYDiLTA==}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
     dependencies:
-      '@rollup/plugin-replace': 5.0.1_rollup@3.7.3
+      '@rollup/plugin-replace': 5.0.1_rollup@3.12.1
       debug: 4.3.4
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
-      rollup: 3.7.3
+      rollup: 3.12.1
       vite: 4.1.1
       workbox-build: 6.5.4
       workbox-window: 6.5.4
