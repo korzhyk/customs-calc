@@ -6,7 +6,7 @@ specifiers:
   mitt: 3.0.0
   solid-js: 1.4.8
   vite: 4.1.1
-  vite-plugin-pwa: 0.14.2
+  vite-plugin-pwa: 0.14.3
   vite-plugin-solid: 2.5.0
   vite-plugin-windicss: 1.8.10
   windicss: 3.5.6
@@ -19,7 +19,7 @@ dependencies:
 devDependencies:
   mitt: 3.0.0
   vite: 4.1.1
-  vite-plugin-pwa: 0.14.2_vite@4.1.1
+  vite-plugin-pwa: 0.14.3_vite@4.1.1
   vite-plugin-solid: 2.5.0_solid-js@1.4.8+vite@4.1.1
   vite-plugin-windicss: 1.8.10_vite@4.1.1
   windicss: 3.5.6
@@ -2920,8 +2920,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /vite-plugin-pwa/0.14.2_vite@4.1.1:
-    resolution: {integrity: sha512-3nTW1LX5i4l2qeuT0ypGyo52KtXagQoW4qdpMxHyUS/qvloa3BHLytQQfdNbU3cXTqV+cfuN99RXXKHiYDiLTA==}
+  /vite-plugin-pwa/0.14.3_vite@4.1.1:
+    resolution: {integrity: sha512-o/CEzdHXamdSV4WJ6hp1EQNe+yVvoFf9b5q1nMhOSqKxaW7BaDqAHAwnq8jt21wakDmcaipnuF3/j78AzZJ6wg==}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
     dependencies:
