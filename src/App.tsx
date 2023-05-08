@@ -116,7 +116,7 @@ export default function App() {
           {(ts) => (
             <span>
               Дані <abbr title="Національний банк України">НБУ</abbr> на{' '}
-              <time datetime={new Date(ts).toISOString()}>{new Date(ts).toLocaleString()}</time>
+              <time datetime={new Date(ts()).toISOString()}>{new Date(ts()).toLocaleString()}</time>
             </span>
           )}
         </Show>
