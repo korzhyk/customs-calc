@@ -17,7 +17,7 @@
     "vite": "4.3.5",
     "vite-plugin-pwa": "0.14.7",
     "vite-plugin-solid": "2.7.0",
-    "vite-plugin-windicss": "1.8.10",
+    "vite-plugin-windicss": "1.9.0",
     "windicss": "3.5.6"
   },
   "dependencies": {
