@@ -16,7 +16,7 @@
     "mitt": "3.0.1",
     "vite": "4.4.11",
     "vite-plugin-pwa": "0.16.5",
-    "vite-plugin-solid": "2.7.0",
+    "vite-plugin-solid": "2.7.1",
     "vite-plugin-windicss": "1.9.1",
     "windicss": "3.5.6"
   },
