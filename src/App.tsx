@@ -82,8 +82,8 @@ export default function App() {
             onChange={valueChanged}
             onKeyUp={valueChanged}
           />
-          <div className="custom-select block text-4xl font-mono font-extrabold rounded-r-lg p-4 pl-1 bg-transparent dark:bg-transparent dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus-within:outline outline-blue-500 outline-3 ">
-           <select id="currency" value={state.currency} onChange={(e) => setState({ currency: e.target.value })}  class="absolute inset-0 opacity-0 z-index-1">
+          <div className="custom-select block text-4xl font-mono font-extrabold rounded-r-lg p-4 pl-1 dark:placeholder-gray-400 dark:text-white focus-within:outline outline-blue-500 outline-3 ">
+           <select id="currency" value={state.currency} onChange={(e) => setState({ currency: e.target.value })}  class="absolute inset-0 opacity-0 z-index-1 dark:bg-gray-700">
              <optgroup label="Популярні">
                 <For each={Object.keys(rates()).filter(c => ~popularCurrencies.indexOf(c)).sort()}>
                   {(item) => (
