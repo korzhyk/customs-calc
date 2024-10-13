@@ -4,13 +4,11 @@
   "description": "VAT and duty import fee calculator",
   "author": "Andrii Korzh <andriii.korzh@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
-  },
-  "engines": {
-    "node": ">=14"
   },
   "devDependencies": {
     "mitt": "3.0.1",
@@ -18,7 +16,8 @@
     "vite-plugin-pwa": "0.20.5",
     "vite-plugin-solid": "2.10.2",
     "vite-plugin-windicss": "1.9.3",
-    "windicss": "3.5.6"
+    "windicss": "3.5.6",
+    "workbox-window": "^7.1.0"
   },
   "dependencies": {
     "currency.js": "2.0.4",
