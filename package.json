@@ -22,6 +22,6 @@
   "dependencies": {
     "currency.js": "2.0.4",
     "lodash.debounce": "4.0.8",
-    "solid-js": "1.9.2"
+    "solid-js": "1.9.5"
   }
 }
