@@ -13,7 +13,7 @@
   "devDependencies": {
     "mitt": "3.0.1",
     "vite": "7.1.4",
-    "vite-plugin-pwa": "1.0.2",
+    "vite-plugin-pwa": "1.0.3",
     "vite-plugin-solid": "2.11.8",
     "vite-plugin-windicss": "1.9.4",
     "windicss": "3.5.6",
